@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .f{
+        font-family: "여기어때 잘난체 OTF" ;
+        font-size :30px;
+        text-align: center;
+        font-style: normal;
+    }
+    .upcontainer{
+        height:30%;
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        width:100%;
+        background-color: rgb(250, 160, 220);
+    }
+    .ltitle{
+        display:flex;
+        flex-direction:row;
+        width:33%;
+    }
+    .ctitle{
+        display:felx;
+        flex-direction:row;
+        align-items: center;
+        width:33%;
+    }
+    .rtitle{
+        display:flex;
+        flex-direction:row;
+        align-items: right;
+        text-align: right;
+        width:30%;
+    }
+    .downcontainer{
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        font-family: "여기어때 잘난체 OTF";
+    }
+    .s{
+       height:40px;
+       width:100%;
+        border: 1px solid #4b8df8;
+        background: white;
+        font-size: 16px;
+    }
+    .input_box{
+        font-size: 16px;
+        width: 100%;
+        padding: 0px;
+        border: 0px;
+        outline: none;
+        float: left;
+        font-family: "여기어때 잘난체 OTF";
+    }
+    .b{
+        display:flex;
+        flex-direction:column;
+        width:10%;
+        height: 100%;
+        
+        outline:none;
+        float:right;
+        color:white;
+    }
+    .wow{
+        align-items: center;
+        background-color: rgb(245, 219, 233);
+    }
+    .new{
+        display:flex;
+        float:right;
+    }
+</style>
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class = "upcontainer f">
+        <div class = "ltitle">
+        <p>민지네<br>Blog</p>
+        
+        </div>
+        <div class = "ctitle f ">
+               <form action = "{% url 'result' %}" method='GET'>
+                    <input class="input_box s" type="text" name="query" value="{{query}}" placeholder="검색하세요">
+                    <select name ="selected">
+                        <option value="no">all search</option>
+                        <option value="title">제목</option>
+                        <option value="text">본문</option>
+                        <option value="author">글쓴이</option>
+                    </select>
+                   
+                    
+                </form>
+        </div>
+        <div class = "rtitle">
+            <p>민지님 안녕하세요.</p>
+        </div>
+    </div>
+
+    <div class ="downcontainer wow">
+        <p>"{{query}}"에 대한 결과는 다음과 같습니다.</p>
+
+    <br>
+    {% if BlogPosts %}
+        {% for post in BlogPosts %}
+            <p>제목 : {{post.title}}</p>
+            <p>내용 : {{post.text}}</p>
+            <p>글쓴이 : {{post.author}}</p>
+         {% endfor %}
+    {% else %}
+        <p>결과가 존재하지 않습니다.</p>
+    {% endif %}
+
+
+    </div>
+    
+</body>
+</html>

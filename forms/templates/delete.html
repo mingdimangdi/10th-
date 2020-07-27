@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method='POST'>
+        {% csrf_token %}
+        <h1>글을 삭제하실건가요?</h1>
+        <h2>글 제목 : {{blog.title}}</h2>
+        <h3>내용 : {{blog.text}}</h3>
+        <input type = 'submit' value ='삭제'>
+    </form>
+
+    <a href="{% url 'detail' blog.id %">돌아가기</a>
+</body>
+</html>
